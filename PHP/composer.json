@@ -1,0 +1,64 @@
+{
+    "name": "deeppatel/php-book-management",
+    "description": "Modern PHP Book Management System with clean architecture",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Deep Patel",
+            "email": "deeppatel2610@example.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "monolog/monolog": "^3.0",
+        "vlucas/phpdotenv": "^5.5",
+        "symfony/console": "^6.0",
+        "twig/twig": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "phpstan/phpstan": "^1.10",
+        "squizlabs/php_codesniffer": "^3.7",
+        "psalm/plugin-phpunit": "^0.18",
+        "vimeo/psalm": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BookManagement\\": "src/",
+            "BookManagement\\Tests\\": "tests/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BookManagement\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test-coverage": "phpunit --coverage-html coverage",
+        "analyse": "phpstan analyse src --level=8",
+        "psalm": "psalm",
+        "cs-check": "phpcs src --standard=PSR12",
+        "cs-fix": "phpcbf src --standard=PSR12",
+        "quality": [
+            "@cs-check",
+            "@analyse",
+            "@psalm",
+            "@test"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
